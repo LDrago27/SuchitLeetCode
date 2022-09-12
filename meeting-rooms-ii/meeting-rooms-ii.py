@@ -1,24 +1,21 @@
 class Solution:
     def minMeetingRooms(self, intervals: List[List[int]]) -> int:
+        startTime,endTime = map(list,zip(*intervals))
         
-        startTimes,endTimes = map(list,zip(*intervals))
+        startTime.sort()
+        endTime.sort()
         
-        n = len(intervals)
-        
-        startTimes.sort()
-        endTimes.sort()
-        
-        end = 0
-        room = 0
+        ctr = 0
         res = 0
+        end = 0
         
-        for i in range(n):
-            
-            if startTimes[i] < endTimes[end]:
-                room+=1
+        for start in startTime:
+            if start < endTime[end]:
+                ctr+=1
             else:
                 end+=1
-                room-=1
-                room+=1
-            res = max(res,room)
+                ctr-=1
+                ctr+=1
+            res= max(res,ctr)
+        
         return res
