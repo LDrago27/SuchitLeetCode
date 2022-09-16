@@ -1,39 +1,38 @@
-from heapq import heappush,heappop
+from heapq import heappop,heapify,heappush
 class Solution:
     def minimumEffortPath(self, heights: List[List[int]]) -> int:
         
-        n = len(heights)
-        m = len(heights[0])
-        
-        minDist = [[float('inf')]*m for _ in range(n)]         
-        minDist[0][0] = 0
-        
-        res = float('inf')
+        n,m = len(heights),len(heights[0])
+        dist = [[float('inf')] * m for _ in range(n)]
         
         visited = set()
-        heap = [[0,0,0]]
+        end = (n-1,m-1)
+        
+        heap = [[0,(0,0)]]
+        
+        dist[0][0] = 0
+        
+        movement = [[1,0],[-1,0],[0,1],[0,-1]]
         
         while heap:
-            effort,x,y = heappop(heap)
+            nodeDist,nodeEle = heappop(heap)
             
-            visited.add((x,y))
+            x,y = nodeEle
+            if nodeEle == end:
+                return nodeDist
+            
+            visited.add(nodeEle)
+            
+            for dx,dy in movement:
+                newX,newY = x+dx,y+dy
                 
-            for dx in [-1,0,1]:
-                for dy in [-1,0,1]:
-                    if abs(dx) == abs(dy):
-                        continue
+                if newX<0 or newX>=n or newY<0 or newY>=m or (newX,newY) in visited:
+                    continue
                     
-                    newX = x+dx
-                    newY = y+dy
+                if dist[newX][newY] > max(nodeDist,abs(heights[x][y]-heights[newX][newY])):
+                    dist[newX][newY] = max(nodeDist,abs(heights[x][y]-heights[newX][newY]))
                     
-                    if newX>=n or newX<0 or newY<0 or newY>=m or (newX,newY) in visited :
-                        continue
+                    heappush(heap,[dist[newX][newY],(newX,newY)])
                     
-                    newEffort = abs(heights[x][y]-heights[newX][newY])
-                    effortUpdate = max(effort,newEffort)
-
-                    if effortUpdate < minDist[newX][newY]:
-                        minDist[newX][newY] = effortUpdate 
-                        heappush(heap,[effortUpdate,newX,newY])
-        #print(minDist)
-        return minDist[-1][-1]
+        
+            
