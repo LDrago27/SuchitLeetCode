@@ -1,71 +1,81 @@
-from collections import defaultdict
+from collections import defaultdict,OrderedDict
 class Solution:
     def alienOrder(self, words: List[str]) -> str:
         
-        n = len(words)
-        
         graph = defaultdict(list)
         
-        for word in words:
-            for char in word:
-                if char not in graph:
-                    graph[char] = []
+        inDegree = OrderedDict()
         
-        def returnOrder(s1,s2):
-            minN = min(len(s1),len(s2))
-            mismatchIndex = -1
+        def findDifferChar(s1,s2):
             
-            for i in range(minN):
-                if s1[i]!=s2[i]:
-                    mismatchIndex = i
-                    break
-                    
-            if  s1[:minN]==s2[:minN] and len(s1) > len(s2):
-                return ('-1','-1')
-            elif mismatchIndex == -1:
-                return ('','')
+            n1,n2 = len(s1),len(s2)
             
-            return (s1[i],s2[i])
-        
-        
-        for i in range(n-1):            
-            x,y = returnOrder(words[i],words[i+1])
-            if x == '':
-                continue
-            elif x == '-1':
-                return ""
-            else:
-                graph[x].append(y)
-        
-        stack = []
-        
-        print(graph)
-        
-        def topologicalSortUtil(currNode,visited,inCycle):
-            # return True if there is a cycle
-            visited.add(currNode)
+            maxInd = min(n1,n2)
             
-            for neighbour in graph[currNode]:
-                if neighbour not in visited:
-                    if (topologicalSortUtil(neighbour,visited,inCycle+[currNode])):
-                        return True
-                if neighbour in inCycle:
-                    return True
-            if currNode not in stack:
-                stack.append(currNode)
-            return False
+            for i in range(maxInd):
+                if s1[i] != s2[i]:
+                    return [s1[i],s2[i],i]
+            
+            return []
+        
+        n = len(words)
+        if n==1:
+            return ''.join(list(set(words[0])))
+        
+        for i in range(n-1):
+            val =  findDifferChar(words[i],words[i+1])
+            
+            
+            
+            if len(val)==0:
+                for char in words[i]:
+                    inDegree[char] = inDegree.get(char,0)
+                for char in words[i+1]:
+                    inDegree[char] = inDegree.get(char,0)
                 
-        startNode =[0]
-        
-        visited = set()
-        
-        for startNode in list(graph.keys()):
-            if startNode not in visited:            
-                 if topologicalSortUtil(startNode,visited,[]):
-                        return ''
-        
-        return ''.join(stack[::-1])
+                if len(words[i+1]) < len(words[i]):
+                    return ''
+                continue
             
+            graph[val[0]].append(val[1])
+            
+            inDegree[val[0]] = inDegree.get(val[0],0)
+            inDegree[val[1]] = inDegree.get(val[1],0)+1
+            
+            if val[2]!=0:
+                for char in words[i][:val[2]]:
+                    inDegree[char] = inDegree.get(char,0)
+            if val[2]+1 < len(words[i]):
+                for char in words[i][val[2]+1:]:
+                    inDegree[char] = inDegree.get(char,0)
+            if val[2]+1 < len(words[i+1]):
+                for char in words[i+1][val[2]+1:]:
+                    inDegree[char] = inDegree.get(char,0)
+            
+        # now we need a topological sort
+        
+        res = []
+        keyList = list(inDegree.keys())
+        queue = []
+        
+        for key in keyList:
+            if inDegree[key] == 0:
+                queue.append(key)
+        
+        while queue:
+            ele = queue.pop(0)
+            res.append(ele)
+            for nextEle in graph[ele]:
+                inDegree[nextEle]-=1
+                
+                if inDegree[nextEle] == 0:
+                    queue.append(nextEle)
+        
+        for key in keyList:
+            if inDegree[key]!=0:
+                return ''
+            
+        return ''.join(res)
             
             
         
