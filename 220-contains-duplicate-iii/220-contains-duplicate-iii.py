@@ -16,7 +16,7 @@ class Solution:
             
             bucketNo = (nums[i]-minEle)//(valueDiff+1)
 
-            print(nums[i],bucketNo,bucket[bucketNo])
+            #print(nums[i],bucketNo,bucket[bucketNo])
             if bucket[bucketNo]!=-1:
                 return True
             
@@ -27,7 +27,7 @@ class Solution:
                 return True
             
             bucket[bucketNo] = i
-            print(bucket[bucketNo])
+            #print(bucket[bucketNo])
             if i>=indexDiff:
                 bucketNo = (nums[i-indexDiff]-minEle)//(valueDiff+1)
                 bucket[bucketNo] = -1
