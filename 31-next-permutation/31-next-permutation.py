@@ -1,12 +1,14 @@
-from bisect import bisect_right
 class Solution:
     def nextPermutation(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
-# The structure is ___High___ we need to find the first index where the element is decreasing and replace it with just higher value in second half and then arrange the rest in ascending order
-
-
+        # fiundamentals are simple
+        # fiind the pivot
+        # second find the smallest before it and samllest number after it swap them
+        # sort thee numbers after the pivot
+        
+        # find the pivot
         n = len(nums)
         i = n-2
         while i>=0:
@@ -29,5 +31,7 @@ class Solution:
         nums[tIndex] = temp
         
         nums[i+1:] = sorted(nums[i+1:])
+        
+        
         
         
