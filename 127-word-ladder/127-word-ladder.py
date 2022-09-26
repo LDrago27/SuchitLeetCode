@@ -17,10 +17,11 @@ class Solution:
         while currLevel:
             nextLevel = set()
             netWordsSet = netWordsSet-currLevel
+            depth+=1
             for word in currLevel:
                 n = len(word)                
                 if word==endWord:
-                    return depth+1
+                    return depth
                     
                 for i in range(n):
                     for char in 'abcdefghijklmnopqrstuvwxyz':
@@ -30,7 +31,6 @@ class Solution:
                             nextLevel.add(newWord)
                             graph[newWord].append(word)
             currLevel = nextLevel
-            depth+=1
 
             
         return 0
