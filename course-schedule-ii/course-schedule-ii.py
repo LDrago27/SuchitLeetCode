@@ -2,36 +2,39 @@ from collections import defaultdict
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
         
-        # topological sorting bascially for every edge u->v u comoes before v
-        # similar to dfs or more appropriately preorder tree traversal
-        
         graph = defaultdict(list)
-        
-        for [a,b] in prerequisites:
-            graph[b].append(a)
-            
-        visited = [False]*(numCourses)
-        stack = []
-        isCyclic = [False]
-        
-        def topologicalSortUtil(node,stack,visitedInCycle):
-            visited[node] = True
-            #print(node,visitedInCycle)
-            for neighbour in graph[node]:
-                if neighbour in visitedInCycle:
-                    #Cyclic so none
-                    isCyclic[0] = True
-                    return
-                if not visited[neighbour]:
-                    topologicalSortUtil(neighbour,stack,visitedInCycle+[node])
-            
-            stack.append(node)
-            
+        #inDegreeGraph = defaultdict(list)
+        inDegree = {}
         for i in range(numCourses):
-            if not visited[i]:
-                topologicalSortUtil(i,stack,[])
-        if isCyclic[0]:
-            return []
-        return stack[::-1]
-
+            inDegree[i] = 0
         
+        queue = []
+        
+        res = []
+        
+        for x,y in prerequisites:
+            graph[y].append(x)
+            #inDegreeGraph[y].append(x)
+            
+            inDegree[x]+=1
+        
+        for i in range(numCourses):
+            if inDegree[i] == 0:
+                queue.append(i)
+                
+                
+        while queue:
+            ele = queue.pop(0)
+            res.append(ele)
+            # Remove this Node so delete all elemest who have ele as the parent and decrease their inDegree
+            
+            for nextEle in graph[ele]:
+                inDegree[nextEle]-=1
+                
+                if inDegree[nextEle] == 0:
+                    queue.append(nextEle)
+        
+        for i in range(numCourses):
+            if inDegree[i]!=0:
+                return []
+        return res
