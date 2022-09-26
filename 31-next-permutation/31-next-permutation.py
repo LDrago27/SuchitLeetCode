@@ -11,26 +11,23 @@ class Solution:
         # find the pivot
         n = len(nums)
         i = n-2
+        
         while i>=0:
-            if nums[i] < nums[i+1]:
+            if nums[i+1]>nums[i]:
                 break
             i-=1
         
-        # we need to swap i with just largest number of its right
-        #IndexTwo = bisect_left(nums,i+1,n-1)
-        
-        tIndex = n-1
-        while tIndex>i:
-            if nums[tIndex] > nums[i]:
+        # now we need to find an element just higher than pivot
+        pivot = i
+        i = n-1
+        while i>pivot:
+            if nums[i]>nums[pivot]:
                 break
-            tIndex-=1
-               
-        
-        temp =  nums[i]
-        nums[i] = nums[tIndex]
-        nums[tIndex] = temp
-        
-        nums[i+1:] = sorted(nums[i+1:])
+            i-=1
+            
+        nums[i],nums[pivot] = nums[pivot],nums[i]
+        print(nums,pivot,i)
+        nums[pivot+1:] = sorted(nums[pivot+1:])
         
         
         
