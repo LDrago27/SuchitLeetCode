@@ -20,6 +20,9 @@ class Solution:
         triplet = []
         for i in range(n):
             
+            if nums[i] > 0:
+                break
+            
             res = twoSum(i+1,n-1,-nums[i])
             
             for ele in res:
