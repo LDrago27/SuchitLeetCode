@@ -6,78 +6,65 @@
 class Solution:
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
         
-        # lets use divide and conquer
+        # Divide and Conquer : No of groups O(nlogn)
         
         def merge2List(head1,head2):
-            
-            # merge list1 and list2 and return list as  the sorted list
+            if head1 == head2:
+                return head1
+            elif head1 == None:
+                return head2
+            elif head2 == None:
+                return head1
             
             temp1,temp2 = head1, head2
-            
-            newHead = None
-            prev = None
+            newHead, curr = None, None
             
             while temp1!= None and temp2!=None:
                 
-                if temp1.val <= temp2.val:
-                    if newHead == None:
-                        newHead = temp1
-                    if prev == None:
-                        prev = temp1
-                    else:
-                        prev.next = temp1
-                        prev = temp1
-                        
+                newNode = None
+                
+                if temp1.val > temp2.val:
+                    newNode = temp2
+                    temp2 = temp2.next
+                else:
+                    newNode = temp1
                     temp1 = temp1.next
                     
-
+                if curr == newHead == None:
+                    curr = newNode
+                    newHead = curr
                 else:
-                    
-                    if newHead == None:
-                        newHead = temp2
-                    if prev == None:
-                        prev = temp2
-                    else:
-                        prev.next = temp2
-                        prev = temp2
-                        
-                    temp2 = temp2.next
-                    
-            while temp1 != None:
-                if newHead == None:
-                    newHead = temp1
-                if prev == None:
-                    prev = temp1
-                else:
-                    prev.next = temp1
-                    prev = temp1      
+                    curr.next = newNode
+                    curr = curr.next
+            
+            while temp1!= None:
+                curr.next = temp1
+                curr = curr.next
                 temp1 = temp1.next
                 
-            while temp2!=None:
-                if newHead == None:
-                    newHead = temp2
-                if prev == None:
-                    prev = temp2
-                else:
-                    prev.next = temp2
-                    prev = temp2      
+            while temp2!= None:
+                curr.next = temp2
+                curr = curr.next
                 temp2 = temp2.next
+                
+            curr.next = None
             
             return newHead
         
         
-        n = len(lists)
-        
-        def mergeUtil(start,end):
-            if start > end or start> n or end > n:
+        def mergeList(start,end):
+            if end < start:
                 return None
             if start == end:
                 return lists[start]
             
+            if end-start == 1:
+                return merge2List(lists[start],lists[end])
             mid = (start+end) // 2
-            
-            return merge2List(mergeUtil(start,mid),mergeUtil(mid+1,end))
+            return merge2List(mergeList(start,mid),mergeList(mid+1,end))
         
-        return mergeUtil(0,n-1)
+        n = len(lists)
+        return mergeList(0,n-1)
             
-                
+        
+        
