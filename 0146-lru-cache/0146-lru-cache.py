@@ -1,90 +1,102 @@
-class ListNode:
-    def __init__(self,key,val,next=None,prev=None):
-        self.val = val
+class Node:
+    def __init__(self,key,value,next = None,prev = None):
+        self.val = value
         self.next = next
         self.prev = prev
         self.key = key
-    
+        
+
 class LRUCache:
+    # We will need a combination of maps and a Doubly Linked List
+    # Doubly Linked List since they support O(1) additons and deletions
+    # HashMap to find the exact Node that we need without the need for a scan 
+    # These will help to keep an average time complexity of O(1) for all three operations
 
     def __init__(self, capacity: int):
-        # We will use a combination of hashMap and bidrectional linked list for this
-        # This will allow us to do all the operations in O(1)
-        self.map = {} # key -> list reference
-        self.head = None
-        self.end = None
         self.cap = capacity
-        
+        self.nodeMap = {} # Maps keys to the actual Nodes
+        self.head = self.end = None # Setting start and end of the Doubly Linked List to None
 
     def get(self, key: int) -> int:
         
-        # fetch the value and put it in first
-        if key not in self.map:
-            return -1
-        
+        if key not in self.nodeMap:
+            return -1 # No Key
+
         else:
-            node = self.map[key]
-            
-            # make the node as the new head
-            # update the end
-            
-            # Case1 the node isalredy the head
-            if node == self.head:
-                return self.map[key].val
-            elif node == self.end:
-                self.end = node.prev
-                node.prev.next = None
-                node.prev = None
-            else:
-                # Somewhere in the middle
-                prevNode = node.prev
-                nextNode = node.next
-                node.prev = None
-                node.next = None
+            # fetch the key and push the node to the top 
+            resNode = self.nodeMap[key] # searched Node
+            value = resNode.val
+            # Make it new Head
+
+            if self.head == resNode:
+                # case 1 : it is the head
+                return value
+            elif self.end == resNode: 
+                # Case 2: it is an endNode
+                self.end = resNode.prev 
+                self.end.next = None
+                resNode.prev = None
+
+                resNode.next = self.head
+                self.head.prev = resNode
+                self.head = resNode
+                return value
+            else: # Case 3 : IT is a middle node
+                prevNode = resNode.prev
+                nextNode = resNode.next
+
                 prevNode.next = nextNode
                 nextNode.prev = prevNode
-            
-            node.next = self.head
-            self.head.prev = node
-            self.head = node
-            
-            return self.map[key].val
+
+                resNode.next = self.head
+                self.head.prev = resNode
+                resNode.prev = None
+                self.head = resNode
+                return value
+
 
     def put(self, key: int, value: int) -> None:
-        
-        # Can be didivide into two parts one is update / add and next is puting on first this can be done using the get
-        
-        # Update 
-        if key in self.map:
-            self.map[key].val = value
-        
-        # addition
+
+
+
+        if key in self.nodeMap:
+
+            self.nodeMap[key].val = value
+            self.get(key)
+
         else:
 
-            # Do we have capacity
-            if len(list(self.map.keys())) < self.cap:
-                self.map[key] = ListNode(key,value)
-            else:
-                self.map.pop(self.end.key)
-                if self.end.prev!=None:
-                    self.end = self.end.prev
-                    self.end.next = None
-                else:
-                    self.end = None
-                self.map[key] = ListNode(key,value)
+            if self.cap <=0:
+                # We need to pop out the last element and then 
+
+                # Pop out the last endNode
 
                 
-            # Now we add the new stuff at the end
-            if self.end == None:
-                self.head = self.end = self.map[key]
+                del self.nodeMap[self.end.key]
+
+                if self.end == self.head:
+                    self.end = self.head = None
+                else:
+                    endNode = self.end.prev
+                    endNode.next = None
+                    self.end.prev = None
+
+                    self.end = endNode
+                
+                self.cap += 1
+
+            self.cap -=1
+            newNode = Node(key,value)
+            self.nodeMap[key] = newNode
+
+            if self.head == self.end == None:
+                self.head = self.end = newNode
             else:
-                self.end.next = self.map[key]
-                self.map[key].prev = self.end
-                self.end = self.map[key]
-                
-        self.get(key)
-                
-            
+                self.end.next = newNode
+                newNode.prev = self.end
+                self.end = newNode
+                self.get(key)
+
 
 
 # Your LRUCache object will be instantiated and called as such:
