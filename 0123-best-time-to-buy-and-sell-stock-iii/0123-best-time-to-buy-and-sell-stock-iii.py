@@ -1,35 +1,34 @@
 class Solution:
     def maxProfit(self, prices: List[int]) -> int:
-        # Divide and Conquer
-        # We will divide the prices array into 2 halves
-        # We will try to find atmost transaction in each halve
+        # Great Question 
+        # Idea is Divide and Conquer 
+        # At any given point i the left side and right side the given point i for example can be considered as the divison point and we need one trasaction on either side of point i 
         
-        # In first halve we need to find track the minValue and compute the profit with current element since it is of a form Buy and then Sell
-        
-        # In Second half we need to track the maxValue and compute profit with the current elment since it is of form Buy and Sell but we are moving in aopposite direction
+        leftSideMin = prices[0]
+        rightSideMax = prices[-1]
         
         n = len(prices)
-        leftSideProfit = [0]*n
-        rightSideProfit = [0]*n
         
-        minLeft = prices[0]
-        maxRight = prices[-1]
+        leftProfit = [0]*n
+        rightProfit = [0]*n
         
-        # Parition Point lies on the right side
-        for i in range(n-2,-1,-1):
-            maxRight = max(maxRight,prices[i])
-            rightSideProfit[i] = max(rightSideProfit[i+1],maxRight-prices[i])
-            
+        # Populating the leftProfit 
+        # Skipping 0 since it is not included in the left Side At all 
+        
         for i in range(1,n):
-            minLeft = min(minLeft,prices[i])
-            leftSideProfit[i] = max(leftSideProfit[i-1],prices[i]-minLeft)
-        
-        res = 0
-        for i in range(n):
-            res = max(res,leftSideProfit[i]+rightSideProfit[i])
+            leftSideMin = min(leftSideMin, prices[i-1])
+            leftProfit[i] = max(leftProfit[i-1],prices[i-1]-leftSideMin) # That is we either do nothing or sell at i-1
             
-        return res
+        # Populating rightProfit
+        # We need to move in a reverse fashion and here we are assuming thatn we are seelign at given price
+        for i in range(n-2,-1,-1):
+            rightSideMax = max(rightSideMax, prices[i])
+            rightProfit[i] = max(rightProfit[i+1], rightSideMax-prices[i])
+            
         
-        
-        
-        
+        # Net Profit is max 
+        maxProfit = 0
+        for i in range(n):
+            maxProfit = max(maxProfit, leftProfit[i]+rightProfit[i])
+            
+        return maxProfit 
