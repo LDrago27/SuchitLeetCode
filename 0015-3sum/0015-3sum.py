@@ -1,34 +1,35 @@
 class Solution:
     def threeSum(self, nums: List[int]) -> List[List[int]]:
-        
         nums.sort()
-        n = len(nums)
         
-        def twoSum(left,right,target):
-            res = []
-            while left < right and right >=0 and left<n:
-                if nums[left]+ nums[right]== target:
-                    res.append([nums[left],nums[right]])
-                    left +=1
-                    right-=1
-                elif nums[left]+ nums[right] > target:
-                    right-=1
-                else:
-                    left+=1
-                    
-            return res
-        triplet = []
-        for i in range(n):
-            
+        n = len(nums)
+        res = set()
+        
+        def findTarget(start,end,target):
+            if start >= end:
+                return
+            if nums[start]+nums[end] == target:
+                res.add((-1*target,nums[start],nums[end]))
+                return findTarget(start+1,end-1,target)
+            elif nums[start]+nums[end] > target:
+                return findTarget(start,end-1,target)
+            else:
+                return findTarget(start+1,end,target)
+        i = 0
+        while i<n:
             if nums[i] > 0:
                 break
+            findTarget(i+1,n-1,-1*nums[i])
             
-            res = twoSum(i+1,n-1,-nums[i])
+            while i+1<n and nums[i+1]==nums[i]:
+                i+=1 # Removes dupplicates
             
-            for ele in res:
-                if [nums[i]]+ele not in triplet:
-                    triplet.append([nums[i]]+ele)
-                
-        return triplet
-                    
-                    
+            i+=1
+        
+        # Convert set to list
+        listRes= []
+        
+        for tup in res:
+            listRes.append(list(tup))
+            
+        return listRes
