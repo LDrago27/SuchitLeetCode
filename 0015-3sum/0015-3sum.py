@@ -33,3 +33,5 @@ class Solution:
             listRes.append(list(tup))
             
         return listRes
+    
+        # O (n^2) -> Time complexity
