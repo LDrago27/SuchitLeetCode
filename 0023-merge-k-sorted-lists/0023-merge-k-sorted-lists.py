@@ -4,67 +4,62 @@
 #         self.val = val
 #         self.next = next
 class Solution:
+    def merge2Lists(self, list1: Optional[ListNode], list2: Optional[ListNode]) -> Optional[ListNode]:
+
+        # Assume we are always storing stuff in head1
+
+        newHead = None
+        currNode = None
+
+        while list1 and list2:
+            if list1.val >= list2.val:
+                if not newHead:
+                    currNode = newHead = list2
+                else:
+                    currNode.next = list2
+                    currNode = currNode.next
+                list2 = list2.next
+            else:
+                if not newHead:
+                    currNode = newHead = list1
+                else:
+                    currNode.next = list1
+                    currNode = currNode.next
+                list1 = list1.next
+
+        while list1:
+            if not newHead:
+                currNode = newHead = list1
+            else:
+                currNode.next = list1
+                currNode = currNode.next
+            list1 = list1.next
+        while list2:
+            if not newHead:
+                currNode = newHead = list2
+            else:
+                currNode.next = list2
+                currNode = currNode.next
+            list2 = list2.next
+        
+        return newHead
     def mergeKLists(self, lists: List[Optional[ListNode]]) -> Optional[ListNode]:
-        
-        # Divide and Conquer : No of groups O(nlogn)
-        
-        def merge2List(head1,head2):
-            if head1 == head2:
-                return head1
-            elif head1 == None:
-                return head2
-            elif head2 == None:
-                return head1
-            
-            temp1,temp2 = head1, head2
-            newHead, curr = None, None
-            
-            while temp1!= None and temp2!=None:
-                
-                newNode = None
-                
-                if temp1.val > temp2.val:
-                    newNode = temp2
-                    temp2 = temp2.next
-                else:
-                    newNode = temp1
-                    temp1 = temp1.next
-                    
-                if curr == newHead == None:
-                    curr = newNode
-                    newHead = curr
-                else:
-                    curr.next = newNode
-                    curr = curr.next
-            
-            while temp1!= None:
-                curr.next = temp1
-                curr = curr.next
-                temp1 = temp1.next
-                
-            while temp2!= None:
-                curr.next = temp2
-                curr = curr.next
-                temp2 = temp2.next
-                
-            curr.next = None
-            
-            return newHead
-        
-        
-        def mergeList(start,end):
-            if end < start:
+
+        def mergeUtil(start,end):
+
+            if start >end:
                 return None
             if start == end:
                 return lists[start]
-            
-            if end-start == 1:
-                return merge2List(lists[start],lists[end])
+            elif end == start+1:
+                return self.merge2Lists(lists[start],lists[end])
+
             mid = (start+end) // 2
-            return merge2List(mergeList(start,mid),mergeList(mid+1,end))
-        
+            return self.merge2Lists(mergeUtil(start,mid),mergeUtil(mid+1,end))
+
         n = len(lists)
-        return mergeList(0,n-1)
-            
-        
+        return mergeUtil(0,n-1)
+
+
+
         
