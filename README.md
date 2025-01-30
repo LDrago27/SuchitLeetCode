@@ -48,6 +48,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0207-course-schedule](https://github.com/LDrago27/SuchitLeetCode/tree/master/0207-course-schedule) |
 | [0226-invert-binary-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0226-invert-binary-tree) |
 | [0417-pacific-atlantic-water-flow](https://github.com/LDrago27/SuchitLeetCode/tree/master/0417-pacific-atlantic-water-flow) |
+| [0572-subtree-of-another-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0572-subtree-of-another-tree) |
 ## Breadth-First Search
 |  |
 | ------- |
@@ -120,6 +121,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0104-maximum-depth-of-binary-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0104-maximum-depth-of-binary-tree) |
 | [0124-binary-tree-maximum-path-sum](https://github.com/LDrago27/SuchitLeetCode/tree/master/0124-binary-tree-maximum-path-sum) |
 | [0226-invert-binary-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0226-invert-binary-tree) |
+| [0572-subtree-of-another-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0572-subtree-of-another-tree) |
 ## Binary Tree
 |  |
 | ------- |
@@ -128,4 +130,13 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0104-maximum-depth-of-binary-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0104-maximum-depth-of-binary-tree) |
 | [0124-binary-tree-maximum-path-sum](https://github.com/LDrago27/SuchitLeetCode/tree/master/0124-binary-tree-maximum-path-sum) |
 | [0226-invert-binary-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0226-invert-binary-tree) |
+| [0572-subtree-of-another-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0572-subtree-of-another-tree) |
+## String Matching
+|  |
+| ------- |
+| [0572-subtree-of-another-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0572-subtree-of-another-tree) |
+## Hash Function
+|  |
+| ------- |
+| [0572-subtree-of-another-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0572-subtree-of-another-tree) |
 <!---LeetCode Topics End-->
