@@ -36,6 +36,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [0128-longest-consecutive-sequence](https://github.com/LDrago27/SuchitLeetCode/tree/master/0128-longest-consecutive-sequence) |
 | [0133-clone-graph](https://github.com/LDrago27/SuchitLeetCode/tree/master/0133-clone-graph) |
+| [0141-linked-list-cycle](https://github.com/LDrago27/SuchitLeetCode/tree/master/0141-linked-list-cycle) |
 ## Depth-First Search
 |  |
 | ------- |
@@ -68,9 +69,14 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Linked List
 |  |
 | ------- |
+| [0141-linked-list-cycle](https://github.com/LDrago27/SuchitLeetCode/tree/master/0141-linked-list-cycle) |
 | [0206-reverse-linked-list](https://github.com/LDrago27/SuchitLeetCode/tree/master/0206-reverse-linked-list) |
 ## Recursion
 |  |
 | ------- |
 | [0206-reverse-linked-list](https://github.com/LDrago27/SuchitLeetCode/tree/master/0206-reverse-linked-list) |
+## Two Pointers
+|  |
+| ------- |
+| [0141-linked-list-cycle](https://github.com/LDrago27/SuchitLeetCode/tree/master/0141-linked-list-cycle) |
 <!---LeetCode Topics End-->
