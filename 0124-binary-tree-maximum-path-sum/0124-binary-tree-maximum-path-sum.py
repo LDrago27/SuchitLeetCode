@@ -6,29 +6,27 @@
 #         self.right = right
 class Solution:
     def maxPathSum(self, root: Optional[TreeNode]) -> int:
-        
-        # Main thing is the max path may or may not pass through the root
-        # Case 1: It terminates left+ root + right or left alone + root , right + root or recurr in the subtree
-        # while returning we return a path that include sroot or root 
-        
+
         res = [float('-inf')]
+
+        cache = {}
+
+        def pathWithRootMax(root):
+            if root in cache:
+                return cache[root]
+
+            if root is None:
+                return 0
+
+            # Case 1: Either current root or root + left side or root+ right Side, or root + right + left side
+
+            returnVal = max(root.val, root.val+pathWithRootMax(root.left), root.val + pathWithRootMax(root.right))
+
+            res[0] = max(res[0],root.val + pathWithRootMax(root.right) + pathWithRootMax(root.left),returnVal)
+            # root.val + pathWithRootMax(root.right) + pathWithRootMax(root.left) -> It is ending the section so we can't really end it here
+            cache[root] = returnVal
+            return returnVal
         
-        def pathSumUtil(node):
-            
-            if node == None:
-                return float('-inf')
-            
-            leftValue = pathSumUtil(node.left)
-            rightValue = pathSumUtil(node.right)
-            
-            # updating the global maxima
-            # Case1 : Not including the root, not needed since this is already covered by recursive use case
-            
-            res[0] = max(res[0],node.val,node.val+leftValue,node.val+rightValue,node.val+leftValue+rightValue)
-            
-            return max(node.val,node.val+leftValue,node.val+rightValue)
-        
-        pathSumUtil(root)
+        pathWithRootMax(root)
         return res[0]
-            
-            
+        
