@@ -7,6 +7,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0091-decode-ways](https://github.com/LDrago27/SuchitLeetCode/tree/master/0091-decode-ways) |
+| [0208-implement-trie-prefix-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0208-implement-trie-prefix-tree) |
 ## Dynamic Programming
 |  |
 | ------- |
@@ -40,6 +41,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0128-longest-consecutive-sequence](https://github.com/LDrago27/SuchitLeetCode/tree/master/0128-longest-consecutive-sequence) |
 | [0133-clone-graph](https://github.com/LDrago27/SuchitLeetCode/tree/master/0133-clone-graph) |
 | [0141-linked-list-cycle](https://github.com/LDrago27/SuchitLeetCode/tree/master/0141-linked-list-cycle) |
+| [0208-implement-trie-prefix-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0208-implement-trie-prefix-tree) |
 ## Depth-First Search
 |  |
 | ------- |
@@ -159,4 +161,12 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0098-validate-binary-search-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0098-validate-binary-search-tree) |
 | [0230-kth-smallest-element-in-a-bst](https://github.com/LDrago27/SuchitLeetCode/tree/master/0230-kth-smallest-element-in-a-bst) |
 | [0235-lowest-common-ancestor-of-a-binary-search-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0235-lowest-common-ancestor-of-a-binary-search-tree) |
+## Design
+|  |
+| ------- |
+| [0208-implement-trie-prefix-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0208-implement-trie-prefix-tree) |
+## Trie
+|  |
+| ------- |
+| [0208-implement-trie-prefix-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0208-implement-trie-prefix-tree) |
 <!---LeetCode Topics End-->
