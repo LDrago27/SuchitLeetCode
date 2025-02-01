@@ -6,6 +6,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## String
 |  |
 | ------- |
+| [0003-longest-substring-without-repeating-characters](https://github.com/LDrago27/SuchitLeetCode/tree/master/0003-longest-substring-without-repeating-characters) |
 | [0091-decode-ways](https://github.com/LDrago27/SuchitLeetCode/tree/master/0091-decode-ways) |
 | [0208-implement-trie-prefix-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0208-implement-trie-prefix-tree) |
 | [0211-design-add-and-search-words-data-structure](https://github.com/LDrago27/SuchitLeetCode/tree/master/0211-design-add-and-search-words-data-structure) |
@@ -38,6 +39,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Hash Table
 |  |
 | ------- |
+| [0003-longest-substring-without-repeating-characters](https://github.com/LDrago27/SuchitLeetCode/tree/master/0003-longest-substring-without-repeating-characters) |
 | [0105-construct-binary-tree-from-preorder-and-inorder-traversal](https://github.com/LDrago27/SuchitLeetCode/tree/master/0105-construct-binary-tree-from-preorder-and-inorder-traversal) |
 | [0128-longest-consecutive-sequence](https://github.com/LDrago27/SuchitLeetCode/tree/master/0128-longest-consecutive-sequence) |
 | [0133-clone-graph](https://github.com/LDrago27/SuchitLeetCode/tree/master/0133-clone-graph) |
@@ -173,4 +175,8 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | ------- |
 | [0208-implement-trie-prefix-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0208-implement-trie-prefix-tree) |
 | [0211-design-add-and-search-words-data-structure](https://github.com/LDrago27/SuchitLeetCode/tree/master/0211-design-add-and-search-words-data-structure) |
+## Sliding Window
+|  |
+| ------- |
+| [0003-longest-substring-without-repeating-characters](https://github.com/LDrago27/SuchitLeetCode/tree/master/0003-longest-substring-without-repeating-characters) |
 <!---LeetCode Topics End-->
