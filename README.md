@@ -7,6 +7,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0003-longest-substring-without-repeating-characters](https://github.com/LDrago27/SuchitLeetCode/tree/master/0003-longest-substring-without-repeating-characters) |
+| [0049-group-anagrams](https://github.com/LDrago27/SuchitLeetCode/tree/master/0049-group-anagrams) |
 | [0076-minimum-window-substring](https://github.com/LDrago27/SuchitLeetCode/tree/master/0076-minimum-window-substring) |
 | [0091-decode-ways](https://github.com/LDrago27/SuchitLeetCode/tree/master/0091-decode-ways) |
 | [0208-implement-trie-prefix-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0208-implement-trie-prefix-tree) |
@@ -31,6 +32,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Array
 |  |
 | ------- |
+| [0049-group-anagrams](https://github.com/LDrago27/SuchitLeetCode/tree/master/0049-group-anagrams) |
 | [0055-jump-game](https://github.com/LDrago27/SuchitLeetCode/tree/master/0055-jump-game) |
 | [0105-construct-binary-tree-from-preorder-and-inorder-traversal](https://github.com/LDrago27/SuchitLeetCode/tree/master/0105-construct-binary-tree-from-preorder-and-inorder-traversal) |
 | [0128-longest-consecutive-sequence](https://github.com/LDrago27/SuchitLeetCode/tree/master/0128-longest-consecutive-sequence) |
@@ -43,6 +45,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0003-longest-substring-without-repeating-characters](https://github.com/LDrago27/SuchitLeetCode/tree/master/0003-longest-substring-without-repeating-characters) |
+| [0049-group-anagrams](https://github.com/LDrago27/SuchitLeetCode/tree/master/0049-group-anagrams) |
 | [0076-minimum-window-substring](https://github.com/LDrago27/SuchitLeetCode/tree/master/0076-minimum-window-substring) |
 | [0105-construct-binary-tree-from-preorder-and-inorder-traversal](https://github.com/LDrago27/SuchitLeetCode/tree/master/0105-construct-binary-tree-from-preorder-and-inorder-traversal) |
 | [0128-longest-consecutive-sequence](https://github.com/LDrago27/SuchitLeetCode/tree/master/0128-longest-consecutive-sequence) |
@@ -190,5 +193,6 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 ## Sorting
 |  |
 | ------- |
+| [0049-group-anagrams](https://github.com/LDrago27/SuchitLeetCode/tree/master/0049-group-anagrams) |
 | [0242-valid-anagram](https://github.com/LDrago27/SuchitLeetCode/tree/master/0242-valid-anagram) |
 <!---LeetCode Topics End-->
