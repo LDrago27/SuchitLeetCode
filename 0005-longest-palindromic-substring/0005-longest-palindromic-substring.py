@@ -1,34 +1,28 @@
 class Solution:
     def longestPalindrome(self, s: str) -> str:
-        
-        # Idea 2: Expanding from centers
-        
+        # classic Dp problem 
+        # Iterate by length and not anything else
         n = len(s)
-        
-        def expand(left,right):
-            if left < 0 and right >=n:
-                return n
-            elif left <0:
-                return right - left -1
-            elif right>=n:
-                return right - left -1
-            
-            if s[left]==s[right]:
-                return expand(left-1,right+1)
-            else:
-                return right-left-1
-            
-        res = 0
-        resStr = ""
+
+        dp = [[False]*n for _ in range(n)]
+        res,resStr = 0, ""
+
         for i in range(n):
-            oddLen = expand(i,i)
-            evenLen = expand(i,i+1)
-            if res < oddLen:
-                res = oddLen
-                resStr = s[i-oddLen//2:i]+s[i]+s[i+1:i+oddLen//2+1]
-            if res < evenLen:
-                res= evenLen
-                rem = (evenLen - 2) // 2
-                resStr = s[i-rem:i]+s[i:i+2]+s[i+2:i+rem+2]
-                
+            dp[i][i] = True
+            resStr = s[i]
+        
+        for i in range(n-1):
+            if s[i]==s[i+1]:
+                dp[i][i+1] = True
+                resStr = s[i:i+2]
+        
+        for length in range(3,n+1):
+            for start in range(n-length+1):
+                if s[start] == s[start+length-1]:
+                    if dp[start+1][start+length-2]:
+                        dp[start][start+length-1] = True
+                        resStr = s[start:start+length]
+        
         return resStr
+
+        
