@@ -2,33 +2,36 @@ from collections import Counter
 class Solution:
     def minWindow(self, s: str, t: str) -> str:
         
-        # idea first expand it till we get a match and then contract it
+
         counterT = Counter(t)
-        n = len(s)
-        counterTemp = {}
-        
-        def isValid(counterTemp,counterT):
-            
+
+
+        def isValidSubString(currStrCounter):
+
             for key in counterT:
-                if key not in counterTemp:
+                if key not in currStrCounter or currStrCounter[key] < counterT[key]:
                     return False
-                if counterT[key] > counterTemp[key]:
-                    return False
-                
             return True
+
         
-        start = 0
-        res, resStr = float('inf'), ""
-        for i in range(n):
-            counterTemp[s[i]] = counterTemp.get(s[i],0)+1
-                            
-            # Trying out compression
-            while start<=i and isValid(counterTemp,counterT):
-                if res > i-start+1:
-                    res = i-start+1
-                    resStr = s[start:i+1]
-                counterTemp[s[start]]-=1
-                start+=1
-                
-                
+        start,end = 0,0
+        currStrCounter = {}
+        res = float('inf')
+        resStr = ""
+
+        n = len(s)
+        while end<n:
+            currStrCounter[s[end]] = currStrCounter.get(s[end],0) + 1 # Updating the counter
+
+            while start<=end and isValidSubString(currStrCounter):
+                if end-start+1 <= res:
+                    res = end-start+1
+                    resStr = s[start:end+1]
+                # try to reduce squeeze
+                currStrCounter[s[start]] -=1 
+                start +=1
+            
+            end+=1
         return resStr
+        
+        
