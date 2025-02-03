@@ -11,6 +11,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 | [0049-group-anagrams](https://github.com/LDrago27/SuchitLeetCode/tree/master/0049-group-anagrams) |
 | [0076-minimum-window-substring](https://github.com/LDrago27/SuchitLeetCode/tree/master/0076-minimum-window-substring) |
 | [0091-decode-ways](https://github.com/LDrago27/SuchitLeetCode/tree/master/0091-decode-ways) |
+| [0125-valid-palindrome](https://github.com/LDrago27/SuchitLeetCode/tree/master/0125-valid-palindrome) |
 | [0208-implement-trie-prefix-tree](https://github.com/LDrago27/SuchitLeetCode/tree/master/0208-implement-trie-prefix-tree) |
 | [0211-design-add-and-search-words-data-structure](https://github.com/LDrago27/SuchitLeetCode/tree/master/0211-design-add-and-search-words-data-structure) |
 | [0242-valid-anagram](https://github.com/LDrago27/SuchitLeetCode/tree/master/0242-valid-anagram) |
@@ -116,6 +117,7 @@ Collection of LeetCode questions to ace the coding interview! - Created using [L
 |  |
 | ------- |
 | [0019-remove-nth-node-from-end-of-list](https://github.com/LDrago27/SuchitLeetCode/tree/master/0019-remove-nth-node-from-end-of-list) |
+| [0125-valid-palindrome](https://github.com/LDrago27/SuchitLeetCode/tree/master/0125-valid-palindrome) |
 | [0141-linked-list-cycle](https://github.com/LDrago27/SuchitLeetCode/tree/master/0141-linked-list-cycle) |
 | [0143-reorder-list](https://github.com/LDrago27/SuchitLeetCode/tree/master/0143-reorder-list) |
 ## Divide and Conquer
